@@ -1,22 +1,22 @@
-import React from 'react';
-import dynamic from 'next/dynamic';
-import { NextPage } from 'next';
-import { SEO } from 'components/seo';
-import { Modal } from '@redq/reuse-modal';
+import React from "react";
+import dynamic from "next/dynamic";
+import { NextPage } from "next";
+import { SEO } from "components/seo";
+import { Modal } from "@redq/reuse-modal";
 import ProductSingleWrapper, {
   ProductSingleContainer,
-} from 'assets/styles/product-single.style';
-import { GET_PRODUCT_DETAILS } from 'graphql/query/product.query';
-import { initializeApollo } from 'utils/apollo';
+} from "assets/styles/product-single.style";
+import { GET_PRODUCT_DETAILS } from "graphql/query/product.query";
+import { initializeApollo } from "utils/apollo";
 
 const ProductDetails = dynamic(() =>
-  import('components/product-details/product-details-one/product-details-one')
+  import("components/product-details/product-details-one/product-details-one")
 );
 const ProductDetailsBook = dynamic(() =>
-  import('components/product-details/product-details-two/product-details-two')
+  import("components/product-details/product-details-two/product-details-two")
 );
 
-const CartPopUp = dynamic(() => import('features/carts/cart-popup'), {
+const CartPopUp = dynamic(() => import("features/carts/cart-popup"), {
   ssr: false,
 });
 
@@ -35,7 +35,7 @@ const ProductPage: NextPage<Props> = ({ data, deviceType }) => {
     <ProductDetails product={data.product} deviceType={deviceType} />
   );
 
-  if (data.product.type === 'BOOK') {
+  if (data.product.type === "BOOK") {
     content = (
       <ProductDetailsBook product={data.product} deviceType={deviceType} />
     );

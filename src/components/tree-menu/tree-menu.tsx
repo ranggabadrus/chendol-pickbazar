@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { usePrevious, useMeasure } from 'utils/hooks';
-import { useSpring, animated } from 'react-spring';
-import { Frame, Title, Content, Header, IconWrapper } from './tree-menu.style';
-import { Button } from 'components/button/button';
-import { ArrowNext } from 'assets/icons/ArrowNext';
-import * as icons from 'assets/icons/category-icons';
+import React, { useState, useEffect } from "react";
+import { usePrevious, useMeasure } from "utils/hooks";
+import { useSpring, animated } from "react-spring";
+import { Frame, Title, Content, Header, IconWrapper } from "./tree-menu.style";
+import { Button } from "components/button/button";
+import { ArrowNext } from "assets/icons/ArrowNext";
+import * as icons from "assets/icons/category-icons";
 
 const Tree = React.memo(
   ({
@@ -25,7 +25,7 @@ const Tree = React.memo(
     const previous = usePrevious(isOpen);
     const [bind, { height: viewHeight }] = useMeasure();
     const { height, opacity, transform } = useSpring<any>({
-      from: { height: 0, opacity: 0, transform: 'translate3d(20px,0,0)' },
+      from: { height: 0, opacity: 0, transform: "translate3d(20px,0,0)" },
       to: {
         height: isOpen ? viewHeight : 0,
         opacity: isOpen ? 1 : 0,
@@ -65,7 +65,7 @@ const Tree = React.memo(
         <Content
           style={{
             opacity,
-            height: isOpen && previous === isOpen ? 'auto' : height,
+            height: isOpen && previous === isOpen ? "auto" : height,
           }}
         >
           <animated.div style={{ transform }} {...bind} children={children} />
